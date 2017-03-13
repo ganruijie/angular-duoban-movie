@@ -10,7 +10,7 @@
             })
         }])
         .controller('comingSoonController', ['$scope', '$http', '$routeParams','$route',
-            'itcastJsonp', function ($scope, $http, $routeParams,$route, itcastJsonp) {
+            'myJsonp', function ($scope, $http, $routeParams,$route, myJsonp) {
                 console.log($http);
                 $scope.pageSize = 5;
                 $scope.curPage = $routeParams.page || 1;
@@ -22,7 +22,7 @@
                     //$scope.updateParams的作用就是用来更新路由中的路由参数，也就是上文中的$routeParams.page对象
                     $route.updateParams({page:current})
                 }
-                itcastJsonp.jsonp('https://api.douban.com/v2/movie/coming_soon',
+                myJsonp.jsonp('https://api.douban.com/v2/movie/coming_soon',
                     {start: moviceStart, count: $scope.pageSize},
                     function (data) {
                         console.log(data);

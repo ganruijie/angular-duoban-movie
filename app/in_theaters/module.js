@@ -10,8 +10,8 @@
             })
         }])
          .controller('inTheaterController', ['$scope', '$http', '$routeParams','$route',
-            'itcastJsonp', function ($scope, $http, $routeParams,$route, itcastJsonp) {
-                console.log(itcastJsonp);
+            'myJsonp', function ($scope, $http, $routeParams,$route, myJsonp) {
+                console.log(myJsonp);
                 $scope.pageSize = 5;
                 $scope.curPage = $routeParams.page || 1;
                 var moviceStart = ($scope.curPage - 1) * $scope.pageSize;
@@ -21,7 +21,7 @@
                     }
                     $route.updateParams({page:current});
                 }
-                itcastJsonp.jsonp('https://api.douban.com/v2/movie/in_theaters',
+                myJsonp.jsonp('https://api.douban.com/v2/movie/in_theaters',
                     {start: moviceStart, count: $scope.pageSize},
                     function (data) {
                         console.log(data);
